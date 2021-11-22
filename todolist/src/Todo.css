@@ -7,3 +7,12 @@
   display: flex;
   align-items: center;
 }
+
+.done {
+  text-decoration: line-through red;
+  font-style: italic;
+}
+
+.noCheckDone {
+  margin-left: 30px;
+}
