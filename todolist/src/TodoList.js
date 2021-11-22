@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
+import "./TodoList.css";
 import Todo from "./Todo";
 
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { taskName: "", tasks: [] };
+    this.state = { todoListName: props.name, taskName: "", tasks: [] };
   }
 
   myTaskChangeHandler = (event) => {
@@ -46,8 +46,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div className="App">
-        <br />
-        To do List
+        {this.state.todoListName}
         <br />
         <div className="aligned">
           <img
@@ -67,9 +66,8 @@ class TodoList extends React.Component {
           {this.state.tasks.map((value, index) => {
             return (
               <Todo
-                key={index}
-                id={value.id}
-                value={value.name}
+                key={value.id}
+                data={value}
                 deleteTask={this.deleteTask}
                 completeTask={this.completeTask}
               />

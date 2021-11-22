@@ -4,16 +4,21 @@ import "./Todo.css";
 class Todo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { id: props.id, value: props.value, done: props.done };
+    // this.state = { id: props.id, value: props.value, done: props.done };
     // console.log("props", props);
+    this.state = { data: props.data };
     // this.state = { taskName: "" };
   }
 
-  completeTask = () => {
-    console.log("Todo completeTask", this.props.id);
-    this.setState({ done: true });
-    this.props.completeTask(this.props.id);
-  };
+  static getDerivedStateFromProps(props, state) {
+    return { data: props.data };
+  }
+
+  //   completeTask = () => {
+  //     console.log("Todo completeTask", this.props.id);
+  //     this.setState({ done: true });
+  //     this.props.completeTask(this.state.data.id);
+  //   };
 
   render() {
     let checkDone = "";
@@ -24,7 +29,7 @@ class Todo extends React.Component {
           alt="Hoàn thành"
           width="30"
           style={{ cursor: "pointer" }}
-          onClick={() => this.completeTask(this.props.id)}
+          onClick={() => this.props.completeTask(this.props.data.id)}
         />
       );
     }
@@ -41,9 +46,9 @@ class Todo extends React.Component {
           onClick={() => this.props.deleteTask(this.props.id)}
         />
         &nbsp; &nbsp;
-        <span className={this.state.done ? "done" : ""}>
+        <span className={this.state.data.done ? "done" : ""}>
           {/* Tên class = "done" */}
-          {this.state.value}
+          {this.state.data.name}
         </span>
       </div>
     );
