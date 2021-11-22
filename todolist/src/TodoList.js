@@ -25,7 +25,7 @@ class TodoList extends React.Component {
   };
 
   deleteTask = (id) => {
-    // console.log("deleteTask", id);
+    console.log("deleteTask", id);
     const tasks = this.state.tasks.filter((task) => task.id !== id);
     // console.log("Sau khi xoa", tasks);
     this.setState({ tasks });
@@ -50,7 +50,7 @@ class TodoList extends React.Component {
         <br />
         <div className="aligned">
           <img
-            src="./images/32379_add_plus_icon.png"
+            src={process.env.PUBLIC_URL + "./images/32379_add_plus_icon.png"}
             alt="Add Task"
             width="50"
             style={{ cursor: "pointer" }}
